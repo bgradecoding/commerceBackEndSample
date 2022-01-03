@@ -1,0 +1,11 @@
+GET http://localhost:5000/posts
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamluaG8iLCJpYXQiOjE2NDEyMTc5Mzh9.eyLwyP6w--qEmY3FDMYF3wBD9jy1h6ep_ExXgRUEUkc
+
+###
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "username": "jinho"
+}

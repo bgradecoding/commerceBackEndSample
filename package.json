@@ -1,0 +1,28 @@
+{
+  "name": "nodecxmapi",
+  "version": "1.0.0",
+  "description": "nodeCxmApi",
+  "main": "index.js",
+  "scripts": {
+    "devStart" : "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgradecoding/nodeCxmApi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgradecoding/nodeCxmApi/issues"
+  },
+  "homepage": "https://github.com/bgradecoding/nodeCxmApi#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
