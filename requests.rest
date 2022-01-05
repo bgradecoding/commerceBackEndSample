@@ -1,9 +1,20 @@
-GET http://localhost:5000/posts
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamluaG8iLCJpYXQiOjE2NDEyMTc5Mzh9.eyLwyP6w--qEmY3FDMYF3wBD9jy1h6ep_ExXgRUEUkc
+GET http://localhost:8000/posts
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamluaG8iLCJpYXQiOjE2NDEzOTE0NTgsImV4cCI6MTY0MTM5MjM1OH0.-sIKCEvbYKzpUx9B1k_OlR7uBoJIGzXUXrpI19ZrMwA
 
 ###
 
-POST http://localhost:5000/login
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "username": "jinho"
+}
+
+
+###
+
+
+POST http://localhost:8000/login2
 Content-Type: application/json
 
 {

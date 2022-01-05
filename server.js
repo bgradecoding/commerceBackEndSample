@@ -1,69 +1,34 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+app.use(bodyParser.json());
 
-const jwt = require('jsonwebtoken')
+var authRouter = require("./routes/auth");
+app.use("/", authRouter);
 
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+const posts = [
+  { username: "jinho", title: "Post 1" },
+  { username: "neo", title: "Post 2" },
+];
 
-const posts =[
-    {"username": "jinho",
-"title":"Post 1"},
-{"username": "neo",
-"title":"Post 2"}
-]
+app.get("/posts", authenticateToken, (req, res) => {
+  res.json(posts.filter((post) => post.username === req.user.name));
+});
 
+function authenticateToken(req, res, nex) {
+  const authHeader = req.headers["authorization"];
 
-app.get('/posts',authenticateToken, (req, res)=> {
-    res.json(posts.filter(post=>post.username===req.user.name))
-})
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null) return res.sendStatus(401);
 
-let refreshTokens = []
-
-app.post('/token',(req, res)=>{
-    const refreshToken = req.body.token
-    if (refreshToken == null) return res.sendStatus(401)
-    if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user)=>{
-        if(err) return res.sendStatus(403)
-        const accesToken = generateToken({ name : user.name })
-        res.json(accesToken)
-    })
-
-})
-
-
-app.delete('/logout', (req, res)=>{
-    refreshTokens = refreshTokens.filter( (token=>token !== req.body.token) )
-    res.sendStatus(204)
-} )
-
-app.post('/login',(req, res)=> {
-    //Authenticate User
-    const username = req.body.username
-    const user ={name : username}
-    const accesToken = generateToken(user)
-    const refreshToken = jwt.sign( user, process.env.REFRESH_TOKEN_SECRET)
-    refreshTokens.push(refreshToken)
-    res.json({accessToken : accesToken, refreshToken:refreshToken})
-})
-
-
-function generateToken(user){
-    return jwt.sign( user, process.env.ACCESS_TOKEN_SECRET, {expiresIn : '15m'} )
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    nex();
+  });
 }
-
-function authenticateToken(req, res, nex){
-    const authHeader = req.headers['authorization']
-    
-    const token = authHeader && authHeader.split(' ')[1]
-    if ( token == null ) return res.sendStatus(401)
-    
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user)=>{
-        if(err) return res.sendStatus(403)
-        req.user = user
-        nex()
-    })
-}
-
-app.listen(5000)
+app.listen(8000);
