@@ -1,15 +1,18 @@
 require("dotenv").config();
+
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+
+const app = express();
 app.use(bodyParser.json());
-
-var authRouter = require("./routes/auth");
-app.use("/", authRouter);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const authRouter = require("./routes/auth");
+app.use("/", authRouter);
+
+//더미 데이터
 const posts = [
   { username: "jinho", title: "Post 1" },
   { username: "neo", title: "Post 2" },
@@ -31,4 +34,5 @@ function authenticateToken(req, res, nex) {
     nex();
   });
 }
+
 app.listen(8000);

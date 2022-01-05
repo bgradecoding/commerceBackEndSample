@@ -1,7 +1,8 @@
 require("dotenv").config();
 var express = require("express");
-var router = express.Router();
 const jwt = require("jsonwebtoken");
+
+var router = express.Router();
 let refreshTokens = [];
 
 //middleware로 쓰는 곳
