@@ -1,6 +1,8 @@
 require("dotenv").config();
 var express = require("express");
 const jwt = require("jsonwebtoken");
+const authModel = require("../model/auth");
+
 
 var router = express.Router();
 let refreshTokens = [];
@@ -30,6 +32,8 @@ router.delete("/logout", (req, res) => {
 router.post("/login", (req, res) => {
   console.log("login router");
   console.log(req.body);
+
+  const result = authModel.authModel()
   //Authenticate User
   const username = req.body.username;
   const user = { name: username };

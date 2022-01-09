@@ -1,15 +1,17 @@
 const mysql_dbc = require("./database");
+const connection = mysql_dbc.init();
 
-module.exports = function () {
-  const connection = mysql_dbc.init();
+
+exports.authModel = function () {
+  
   return {
-    mVerifyUserInfo: function () {
-      connection.query(
-        "SELECT 1 + 1 AS solution",
+    mVerifyUserInfo: async function () {
+      await connection.query(
+        "SELECT * from city",
         function (error, results, fields) {
           connection.end();
           if (error) throw error;
-          return results;
+          console.log(results);
         }
       );
     },
