@@ -7,5 +7,6 @@ exports.init = function () {
         user: process.env.DB_USER, // mysql user
         password: process.env.DB_PASSWORD, // mysql password
         database: process.env.DB_DATABASE, // mysql 데이터베이스
+        port : 3305
       });
 };
