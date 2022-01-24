@@ -7,7 +7,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "username": "jinho"
+    "id": "admin",
+    "password" : "admin"
 }
 
 

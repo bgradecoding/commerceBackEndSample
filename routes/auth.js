@@ -30,13 +30,10 @@ router.delete("/logout", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  console.log("login router");
-  console.log(req.body);
+  console.log(req.body)
+  const result = authModel.authModel(req.body.userid, req.body.password)
 
-  const result = authModel.authModel()
-  //Authenticate User
-  const username = req.body.username;
-  const user = { name: username };
+  const user = { name: "" };
   const accesToken = generateToken(user);
   const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
   refreshTokens.push(refreshToken);
