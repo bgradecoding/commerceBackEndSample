@@ -29,15 +29,20 @@ router.delete("/logout", (req, res) => {
   res.sendStatus(204);
 });
 
-router.post("/login", (req, res) => {
-  console.log(req.body)
-  const result = authModel.authModel(req.body.userid, req.body.password)
-
-  const user = { name: "" };
+router.post("/login", async (req, res) => {
+  
+  const result = await authModel.authModel(req.body.userid, req.body.password)
+  
+  const user = { name: result.ADID };
+  
   const accesToken = generateToken(user);
+  
   const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+  
   refreshTokens.push(refreshToken);
+  
   res.json({ accessToken: accesToken, refreshToken: refreshToken });
+  
 });
 
 function generateToken(user) {
