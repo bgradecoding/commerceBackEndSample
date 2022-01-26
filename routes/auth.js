@@ -1,8 +1,8 @@
 require("dotenv").config();
 var express = require("express");
 const jwt = require("jsonwebtoken");
-const authModel = require("../model/auth");
-
+const authModel = require("../model/admin");
+const util = require('../util/util')
 
 var router = express.Router();
 let refreshTokens = [];
@@ -19,7 +19,7 @@ router.post("/token", (req, res) => {
   if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
   jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
-    const accesToken = generateToken({ name: user.name });
+    const accesToken = util.generateToken({ name: user.name });
     res.json(accesToken);
   });
 });
@@ -29,24 +29,35 @@ router.delete("/logout", (req, res) => {
   res.sendStatus(204);
 });
 
+
+
 router.post("/login", async (req, res) => {
+
+  try{
+    
+    const result = await authModel.loginAdmin(req.body.userid, req.body.password)
+
+    if( result ){
+      const user = { name: result.ADID };
   
-  const result = await authModel.authModel(req.body.userid, req.body.password)
-  
-  const user = { name: result.ADID };
-  
-  const accesToken = generateToken(user);
-  
-  const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
-  
-  refreshTokens.push(refreshToken);
-  
-  res.json({ accessToken: accesToken, refreshToken: refreshToken });
-  
+      const accesToken = util.generateToken(user);
+    
+      const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+    
+      refreshTokens.push(refreshToken);
+    
+      res.json({ accessToken: accesToken, refreshToken: refreshToken });
+
+    }else {
+      res.sendStatus(401);
+    }
+  }catch(err){
+    console.log(err)
+    res.sendStatus(500);
+  }
+
 });
 
-function generateToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
-}
+
 
 module.exports = router;
