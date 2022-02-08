@@ -2,10 +2,11 @@
   "name": "nodecxmapi",
   "version": "1.0.0",
   "description": "nodeCxmApi",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devjs": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch \"*.ts\" --exec \"ts-node\" app.ts"
   },
   "repository": {
     "type": "git",
@@ -18,14 +19,20 @@
   },
   "homepage": "https://github.com/bgradecoding/nodeCxmApi#readme",
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
     "body-parser": "^1.19.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-async-error": "^0.0.2",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.3"
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0"
   }
 }
