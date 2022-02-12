@@ -17,7 +17,7 @@ export async function createAdmin(newAdminInfo: PostAdmin): Promise<string> {
   } = newAdminInfo;
 
   const query: string =
-    "INSERT INTO tb_admin VALUES(null,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
+    "INSERT INTO tb_admin VALUES(2,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW())";
   return db
     .execute(query, [
       adlvno,
@@ -37,6 +37,6 @@ export async function createAdmin(newAdminInfo: PostAdmin): Promise<string> {
 
 export async function getAdmin(): Promise<Array<GetAdmin>> {
   const query: string =
-    "SELECT ta.adlvno, ta.adid, ta.adname, ta.email, ta.depart, tal.lvname from tb_admin as ta, tb_admin_level as tal where ta.adlvno=tal.adlvno";
+    "SELECT ta.adlvno, ta.adid, ta.adname, ta.email, ta.depart, tal.lvname, ta.duty from tb_admin as ta, tb_admin_level as tal where ta.adlvno=tal.adlvno";
   return db.execute(query).then((result: any) => result[0]);
 }

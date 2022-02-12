@@ -5,7 +5,7 @@ import * as adminData from "../data/admin";
 export async function createAdmin(req: Request, res: Response) {
   const newAdminInfo: PostAdmin = req.body;
   const insertId = await adminData.createAdmin(newAdminInfo);
-  res.sendStatus(201).json({ inserId: insertId });
+  res.status(201).json({ inserId: insertId });
 }
 
 export async function getAdmin(req: Request, res: Response) {
