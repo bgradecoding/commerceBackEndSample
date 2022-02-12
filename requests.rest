@@ -17,3 +17,24 @@ Content-Type: application/json
 
 GET http://localhost:8000/admin/getAdmins
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NDMyMDM3NTIsImV4cCI6MTY0MzIwNDY1Mn0.VGmakdy6O9PQ2bCBFvy_Q77WKwY_kFtqrcLCLdG8fQ4
+
+
+###
+
+POST http://localhost:8000/admin/admin
+Content-Type: application/json
+
+{
+  "adlvno": 1,
+  "adid": "admin",
+  "adpw": "admin",
+  "adname": "메인관리자",
+  "adress": "관리자",
+  "findpass_que": "관리자인가",
+  "findpass_ans": "그렇다",
+  "email": "admin@admin.com",
+  "tel": "01032221234",
+  "depart": "운영팀",
+  "duty": "팀장"
+}
+
