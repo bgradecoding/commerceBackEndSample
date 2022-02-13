@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import authRouter from "./routes/auth";
 import adminRouter from "./routes/admin";
 import helmet from "helmet";
@@ -10,6 +10,11 @@ app.use(helmet());
 
 app.use("/", authRouter);
 app.use("/admin", adminRouter);
+
+app.use((error: any, req: Request, res: Response) => {
+  console.error(error);
+  res.sendStatus(500);
+});
 
 app.listen(8000, () => {
   console.log("**----------------------------------**");
