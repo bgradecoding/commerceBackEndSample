@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import "dotenv/config";
 import jwt from "jsonwebtoken";
-import { PostAdmin } from "../model/admin";
+import { JwtAdmin } from "../model/admin";
 
 const ACCESS_TOKEN_SECRET: string = process.env.ACCESS_TOKEN_SECRET || "";
 
@@ -21,6 +21,6 @@ export function authenticateToken(
   });
 }
 
-export function generateToken(user: Pick<PostAdmin, "adid">) {
+export function generateToken(user: JwtAdmin) {
   return jwt.sign(user, ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
 }

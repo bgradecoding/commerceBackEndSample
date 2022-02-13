@@ -7,8 +7,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "userid": "admin",
-    "password" : "admin"
+    "adid": "admin",
+    "adpw" : "admin"
 }
 
 
@@ -25,16 +25,16 @@ POST http://localhost:8000/admin/admin
 Content-Type: application/json
 
 {
-  "adlvno": 2,
-  "adid": "admin123",
-  "adpw": "admin123",
+  "adlvno": 1,
+  "adid": "admin",
+  "adpw": "admin",
   "adname": "부관리자",
   "adress": "관리자",
   "findpass_que": "관리자인가",
   "findpass_ans": "그렇다",
-  "email": "1111@admin.com",
+  "email": "admin@admin.com",
   "tel": "01032221234",
   "depart": "운영팀",
-  "duty": "팀원"
+  "duty": "팀장"
 }
 

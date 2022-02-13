@@ -20,3 +20,18 @@ export type GetAdmin = {
   duty: string;
   lvname: string;
 };
+
+export type LoginAdmin = {
+  adid: string;
+  adpw: string;
+  adname: string;
+  depart: string;
+  duty: string;
+  lvname: string;
+  lvcode: string;
+};
+
+export type JwtAdmin = {
+  adid: string;
+  lvcode: string;
+};
