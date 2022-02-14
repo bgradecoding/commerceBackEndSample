@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import authRouter from "./routes/auth";
 import adminRouter from "./routes/admin";
+import memberRouter from "./routes/member";
 import helmet from "helmet";
 
 const app = express();
@@ -10,9 +11,9 @@ app.use(helmet());
 
 app.use("/", authRouter);
 app.use("/admin", adminRouter);
+app.use("/member", memberRouter);
 
 app.use((error: any, req: Request, res: Response) => {
-  console.error(error);
   res.sendStatus(500);
 });
 

@@ -53,3 +53,8 @@ Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4i
 
 GET http://localhost:8000/admin/admin/admin3
 Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAxMzE2LCJleHAiOjE2NDQ4MDIyMTZ9.GR3s8rGp8mKiUm5ftFZOYJYZwplkHrmffWUPSP5SGKE
+
+###
+
+GET http://localhost:8000/member/members?mbname=정진호
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODUxOTU1LCJleHAiOjE2NDQ4NTI4NTV9.Dw4dkpdmQsuhUAi29Yss3KX6CZHHm2-ra5jjRa19pJI
