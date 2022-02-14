@@ -11,6 +11,8 @@ router.use((req: Request, res: Response, next: NextFunction) => {
 
 router.get("/admin", adminController.getAdmin);
 
+router.get("/admin/:adid", adminController.checkDupAdminId);
+
 router.post("/admin", adminController.createAdmin);
 
 router.delete("/admin", adminController.deleteAdmin);

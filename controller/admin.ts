@@ -25,3 +25,14 @@ export async function deleteAdmin(req: Request, res: Response) {
   await adminData.deleteAdmin(req.body.adidArray);
   res.sendStatus(204);
 }
+
+export async function checkDupAdminId(req: Request, res: Response) {
+  const checkAdminId = req.params.adid;
+  console.log(checkAdminId);
+  const resultId = await adminData.checkDupAdminId(checkAdminId);
+  console.log(resultId);
+  if (resultId) {
+    return res.status(409).json({ message: `${checkAdminId} already exists` });
+  }
+  res.status(200).json({ message: `${checkAdminId} is vailable` });
+}

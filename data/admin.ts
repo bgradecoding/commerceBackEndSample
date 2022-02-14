@@ -62,3 +62,8 @@ export async function deleteAdmin(adidArray: Array<string>): Promise<void> {
   console.log(query);
   db.execute(query);
 }
+
+export async function checkDupAdminId(checkAdminId: string): Promise<string> {
+  const query: string = "SELECT adid FROM tb_admin WHERE adid = ?";
+  return db.execute(query, [checkAdminId]).then((result: any) => result[0][0]);
+}

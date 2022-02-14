@@ -23,7 +23,7 @@ GET http://localhost:8000/admin/admin
 
 POST http://localhost:8000/admin/admin
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAwMjk4LCJleHAiOjE2NDQ4MDExOTh9.Dsh3o6OAF7rgI3ywNOaCnqUrnZ-N6hHmZLy8A-EkBew
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAxMzE2LCJleHAiOjE2NDQ4MDIyMTZ9.GR3s8rGp8mKiUm5ftFZOYJYZwplkHrmffWUPSP5SGKE
 
 {
   "adlvno": 2,
@@ -48,3 +48,8 @@ Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4i
 {
   "adidArray":["admin1", "admin2"]
 }
+
+###
+
+GET http://localhost:8000/admin/admin/admin3
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAxMzE2LCJleHAiOjE2NDQ4MDIyMTZ9.GR3s8rGp8mKiUm5ftFZOYJYZwplkHrmffWUPSP5SGKE
