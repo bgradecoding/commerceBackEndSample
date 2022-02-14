@@ -23,11 +23,12 @@ GET http://localhost:8000/admin/admin
 
 POST http://localhost:8000/admin/admin
 Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAwMjk4LCJleHAiOjE2NDQ4MDExOTh9.Dsh3o6OAF7rgI3ywNOaCnqUrnZ-N6hHmZLy8A-EkBew
 
 {
-  "adlvno": 1,
-  "adid": "admin",
-  "adpw": "admin",
+  "adlvno": 2,
+  "adid": "admin2",
+  "adpw": "admin2",
   "adname": "부관리자",
   "adress": "관리자",
   "findpass_que": "관리자인가",
@@ -38,3 +39,12 @@ Content-Type: application/json
   "duty": "팀장"
 }
 
+###
+
+DELETE http://localhost:8000/admin/admin
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGlkIjoiYWRtaW4iLCJsdmNvZGUiOiJBIiwiaWF0IjoxNjQ0ODAwMjk4LCJleHAiOjE2NDQ4MDExOTh9.Dsh3o6OAF7rgI3ywNOaCnqUrnZ-N6hHmZLy8A-EkBew
+
+{
+  "adidArray":["admin1", "admin2"]
+}

@@ -43,19 +43,22 @@ export async function getAdmin(): Promise<Array<GetAdmin>> {
 
 export async function login(adid: string): Promise<LoginAdmin> {
   const query: string =
-    "SELECT ta.adid, ta.adname, ta.adpw, ta.depart, ta.duty, tal.lvname, tal.lvcode FROM tb_admin AS ta, tb_admin_level AS tal WHERE ta.adlvno=tal.adlvno ADN ta.adid=?";
+    "SELECT ta.adid, ta.adname, ta.adpw, ta.depart, ta.duty, tal.lvname, tal.lvcode FROM tb_admin AS ta, tb_admin_level AS tal WHERE ta.adlvno=tal.adlvno AND ta.adid=?";
   return db.execute(query, [adid]).then((result: any) => result[0][0]);
 }
 
 export async function deleteAdmin(adidArray: Array<string>): Promise<void> {
   let pAdids: string = "";
   adidArray.map((val, inx) => {
+    console.log(` inx===${inx}   length=====${adidArray.length}`);
     if (inx === adidArray.length - 1) {
-      pAdids = `'${val}'`;
+      pAdids += `'${val}'`;
     } else {
-      pAdids = `'${val}',`;
+      pAdids += `'${val}',`;
     }
   });
   const query: string = "DELETE FROM tb_admin WHERE adid in (" + pAdids + ")";
+
+  console.log(query);
   db.execute(query);
 }
