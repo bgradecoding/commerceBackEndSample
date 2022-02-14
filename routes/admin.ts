@@ -13,4 +13,6 @@ router.get("/admin", adminController.getAdmin);
 
 router.post("/admin", adminController.createAdmin);
 
+router.delete("/admin", adminController.deleteAdmin);
+
 export default router;

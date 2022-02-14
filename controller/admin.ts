@@ -18,5 +18,10 @@ export async function createAdmin(req: Request, res: Response) {
 
 export async function getAdmin(req: Request, res: Response) {
   const adminInfo: Array<GetAdmin> = await adminData.getAdmin();
-  res.send(adminInfo);
+  res.json(adminInfo);
+}
+
+export async function deleteAdmin(req: Request, res: Response) {
+  await adminData.deleteAdmin(req.body.adidArray);
+  res.sendStatus(204);
 }
