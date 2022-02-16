@@ -9,7 +9,9 @@ router.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 router.get("/members", memberController.getMembers);
-router.get("/member", memberController.getMemberDetail);
+
+//router.get("/member", memberController.getMemberDetail);
+
 router.put("/member", memberController.updateMemberInfo);
 
 export default router;

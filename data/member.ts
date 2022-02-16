@@ -6,6 +6,19 @@ const membersCommonQuery =
 
 export async function getMembers(searchWord: string): Promise<Array<Members>> {
   const query: string = membersCommonQuery + searchWord;
-  console.log(query);
   return db.execute(query).then((result: any) => result[0]);
+}
+
+export async function updateMemberInfo(mbidArray: Array<string>) {
+  let pMbids: string = "";
+  mbidArray.map((val, inx) => {
+    if (inx === mbidArray.length - 1) {
+      pMbids += `'${val}'`;
+    } else {
+      pMbids += `'${val}',`;
+    }
+  });
+  const query: string =
+    "UPDATE tb_member SET mbstatus = '승인' WHERE mbid in (" + pMbids + ")";
+  db.execute(query);
 }

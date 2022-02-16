@@ -19,4 +19,6 @@ export async function getMembers(req: Request, res: Response) {
 //추후 필요하면 구현
 export async function getMemberDetail(req: Request, res: Response) {}
 
-export async function updateMemberInfo(req: Request, res: Response) {}
+export async function updateMemberInfo(req: Request, res: Response) {
+  await memberData.updateMemberInfo(req.body.mbidArray);
+}
