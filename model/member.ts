@@ -10,3 +10,12 @@ export type Members = {
   mbstatus: string;
   created: string;
 };
+
+export type Level = {
+  mblvcode: string;
+  mblvname: string;
+  remark: string;
+  discount: number;
+  buy_point: number;
+  post_point: number;
+};

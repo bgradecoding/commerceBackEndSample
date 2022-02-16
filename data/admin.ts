@@ -50,7 +50,6 @@ export async function login(adid: string): Promise<LoginAdmin> {
 export async function deleteAdmin(adidArray: Array<string>): Promise<void> {
   let pAdids: string = "";
   adidArray.map((val, inx) => {
-    console.log(` inx===${inx}   length=====${adidArray.length}`);
     if (inx === adidArray.length - 1) {
       pAdids += `'${val}'`;
     } else {
@@ -58,8 +57,6 @@ export async function deleteAdmin(adidArray: Array<string>): Promise<void> {
     }
   });
   const query: string = "DELETE FROM tb_admin WHERE adid in (" + pAdids + ")";
-
-  console.log(query);
   db.execute(query);
 }
 

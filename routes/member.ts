@@ -14,4 +14,8 @@ router.get("/members", memberController.getMembers);
 
 router.put("/member", memberController.updateMemberInfo);
 
+router.post("/level", memberController.createLevel);
+router.put("/level", memberController.updateLevel);
+router.delete("/level", memberController.deleteLevel);
+
 export default router;

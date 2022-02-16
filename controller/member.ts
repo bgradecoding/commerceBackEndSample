@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Members } from "../model/member";
+import { Members, Level } from "../model/member";
 import * as memberData from "../data/member";
 
 export async function getMembers(req: Request, res: Response) {
@@ -22,3 +22,11 @@ export async function getMemberDetail(req: Request, res: Response) {}
 export async function updateMemberInfo(req: Request, res: Response) {
   await memberData.updateMemberInfo(req.body.mbidArray);
 }
+
+export async function createLevel(req: Request, res: Response) {
+  const newLevelInfo: Level = req.body.newLevelInfo;
+  const insertId = await memberData.createLevel(newLevelInfo);
+  res.status(201).json({ inserId: insertId });
+}
+export async function updateLevel(req: Request, res: Response) {}
+export async function deleteLevel(req: Request, res: Response) {}
