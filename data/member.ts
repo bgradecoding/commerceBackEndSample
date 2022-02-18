@@ -23,8 +23,39 @@ export async function updateMemberInfo(mbidArray: Array<string>) {
   db.execute(query);
 }
 
-export async function createLevel(levelInfo: Level) {}
+export async function createLevel(levelInfo: Level) {
+  const { mblvcode, mblvname, remark, discount, buy_point, post_point } =
+    levelInfo;
+  const query: string =
+    "INSERT INTO tb_member_level VALUES (null,?,?,?,?,?,?,NOW(),NOW())";
+  return db
+    .execute(query, [
+      mblvcode,
+      mblvname,
+      remark,
+      discount,
+      buy_point,
+      post_point,
+    ])
+    .then((result: any) => result[0].insertId);
+}
 
-export async function updateLevel(levelInfo: Level) {}
+export async function updateLevel(levelInfo: Level) {
+  const { mblvcode, mblvname, remark, discount, buy_point, post_point } =
+    levelInfo;
+  const query: string =
+    "UPDATE tb_member_level SET mblvname=?,remark=?,discount=?, buy_point=?, post_point=? WHERE mblvcode=?";
+  return db.execute(query, [
+    mblvname,
+    remark,
+    discount,
+    buy_point,
+    post_point,
+    mblvcode,
+  ]);
+}
 
-export async function deleteLevel(levelCode: string) {}
+export async function deleteLevel(levelCode: string) {
+  const query: string = "DELETE FROM tb_member_level WHERE mblvcode=?";
+  db.execute(query, [levelCode]);
+}

@@ -21,6 +21,7 @@ export async function getMemberDetail(req: Request, res: Response) {}
 
 export async function updateMemberInfo(req: Request, res: Response) {
   await memberData.updateMemberInfo(req.body.mbidArray);
+  res.sendStatus(200);
 }
 
 export async function createLevel(req: Request, res: Response) {
@@ -28,5 +29,12 @@ export async function createLevel(req: Request, res: Response) {
   const insertId = await memberData.createLevel(newLevelInfo);
   res.status(201).json({ inserId: insertId });
 }
-export async function updateLevel(req: Request, res: Response) {}
-export async function deleteLevel(req: Request, res: Response) {}
+export async function updateLevel(req: Request, res: Response) {
+  const newLevelInfo: Level = req.body.updateLevelInfo;
+  await memberData.updateLevel(newLevelInfo);
+  res.sendStatus(200);
+}
+export async function deleteLevel(req: Request, res: Response) {
+  await memberData.deleteLevel(req.body.mblvcode);
+  res.sendStatus(204);
+}
