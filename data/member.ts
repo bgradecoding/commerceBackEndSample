@@ -44,7 +44,7 @@ export async function updateLevel(levelInfo: Level) {
   const { mblvcode, mblvname, remark, discount, buy_point, post_point } =
     levelInfo;
   const query: string =
-    "UPDATE tb_member_level SET mblvname=?,remark=?,discount=?, buy_point=?, post_point=? WHERE mblvcode=?";
+    "UPDATE tb_member_level SET mblvname=?,remark=?,discount=?, buy_point=?, post_point=?, updated=NOW() WHERE mblvcode=?";
   return db.execute(query, [
     mblvname,
     remark,

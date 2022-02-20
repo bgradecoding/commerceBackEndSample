@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import authRouter from "./routes/auth";
 import adminRouter from "./routes/admin";
 import memberRouter from "./routes/member";
+import couponRouter from "./routes/coupon";
 import helmet from "helmet";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(helmet());
 app.use("/", authRouter);
 app.use("/admin", adminRouter);
 app.use("/member", memberRouter);
+app.use("coupon", couponRouter);
 
 app.use((error: any, req: Request, res: Response) => {
   res.sendStatus(500);
