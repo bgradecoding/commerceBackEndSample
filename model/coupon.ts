@@ -1,0 +1,21 @@
+export type Coupon = {
+  cpno: number;
+  gdno: number;
+  gname: string;
+  coup_name: string;
+  coup_type: string;
+  order_amount: string;
+  coupon_number: string;
+  pay_type: string;
+  disc_type: string;
+  disc_price: string;
+  disc_rate: string;
+  limit_price: string;
+  limit_amount: string;
+  dead_type: string;
+  dead_term: string;
+  distdate_start: string;
+  distdate_end: string;
+  state: string;
+  created: string;
+};

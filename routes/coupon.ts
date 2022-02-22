@@ -8,7 +8,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
   util.authenticateToken(req, res, next);
 });
 
-router.get("/coupon", couponController.getCoupon);
+router.get("/coupon", couponController.getCouponList);
 router.get("/coupon/:id", couponController.getCoupon);
 router.post("/coupon", couponController.createCoupon);
 router.delete("/coupon", couponController.deleteCoupon);

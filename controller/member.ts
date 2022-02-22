@@ -30,7 +30,7 @@ export async function createLevel(req: Request, res: Response) {
   res.status(201).json({ inserId: insertId });
 }
 export async function updateLevel(req: Request, res: Response) {
-  const newLevelInfo: Level = req.body.updateLevelInfo;
+  const newLevelInfo: Partial<Level> = req.body.updateLevelInfo;
   await memberData.updateLevel(newLevelInfo);
   res.sendStatus(200);
 }

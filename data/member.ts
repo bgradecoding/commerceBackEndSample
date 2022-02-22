@@ -40,7 +40,7 @@ export async function createLevel(levelInfo: Level) {
     .then((result: any) => result[0].insertId);
 }
 
-export async function updateLevel(levelInfo: Level) {
+export async function updateLevel(levelInfo: Partial<Level>) {
   const { mblvcode, mblvname, remark, discount, buy_point, post_point } =
     levelInfo;
   const query: string =
