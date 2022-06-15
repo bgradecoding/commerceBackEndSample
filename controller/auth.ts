@@ -37,7 +37,7 @@ export async function login(req: Request, res: Response) {
 
 export function logout(req: Request, res: Response) {
   refreshTokens = refreshTokens.filter((token) => token !== req.body.token);
-  res.sendStatus(204);
+  res.sendStatus(204).json({ message: "Logout success" });
 }
 
 export function tokenValidator(req: Request, res: Response) {
