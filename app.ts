@@ -18,7 +18,7 @@ app.use("/coupon", couponRouter);
 app.use("/cate", cateRouter);
 
 app.use((error: any, req: Request, res: Response) => {
-  res.sendStatus(500);
+  res.json("Error");
 });
 
 app.listen(8000, () => {
